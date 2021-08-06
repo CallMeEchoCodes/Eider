@@ -1,0 +1,12 @@
+# dependencies
+/node_modules
+
+# System Files
+.DS_Store
+thumbs.db
+
+# IDE Things
+/.idea
+
+# API Keys
+config.json
