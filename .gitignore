@@ -8,5 +8,6 @@ thumbs.db
 # IDE Things
 /.idea
 
-# API Keys
+# Config Files
 config.json
+/data
