@@ -3,14 +3,12 @@ const chalk = require('chalk');
 const fs = require('fs');
 const Enmap = require('enmap');
 
-
 const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(), ms));
 async function error(err) {
 	console.log(chalk.redBright(err));
 	await sleep(200);
 	process.exit(0);
 }
-
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const { token } = require('./config.json');
@@ -32,8 +30,7 @@ try {
 		const event = require(`./events/${file}`);
 		if (event.once) {
 			client.once(event.name, (...args) => event.execute(client, ...args));
-		}
-		else {
+		} else {
 			client.on(event.name, (...args) => event.execute(client, ...args));
 		}
 		console.log(chalk.hex('#808080')('Loaded event ') + chalk.hex('#3c850c')(`${file} - ${require(`./events/${file}`).name} event`));
