@@ -29,7 +29,7 @@ module.exports = {
 			const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 			if (now < expirationTime) {
 				const timeLeft = (expirationTime - now) / 1000;
-				return message.channel.send(`\`${prefix + commandName}\` on cooldown for ${timeLeft.toFixed(1)} more second(s)`).then(x => {x.delete({ timeout:3000 });});
+				return message.reply(`\`${prefix + commandName}\` is on cooldown for ${timeLeft.toFixed(1)} more second(s)`).then(x => {x.delete({ timeout:3000 });});
 			}
 		}
 		timestamps.set(message.author.id, now);
@@ -37,7 +37,7 @@ module.exports = {
 
 
 		// Return If Command Needs Args But No Args Were Provided
-		if (command.args && !args.length) return message.channel.send('This command requires args!');
+		if (command.args && !args.length) return message.reply('That command requires arguments!');
 
 		// Check If Command Is Guild Only
 		if (command.guildOnly === true && message.guild === null) {
@@ -47,7 +47,7 @@ module.exports = {
 		// Permissions System
 		if (command.permissions) {
 			if (command.permissions === 'OWNER' && message.guild.ownerID != message.author.id) {
-				return message.channel.send('Only the server owner can run that command!');
+				return message.reply('Only the server owner can run that command!');
 			} else if (!message.member.hasPermission(command.permissions)) {
 				return message.reply('You don\'t have permission to run that command!');
 			}
