@@ -1,7 +1,8 @@
 const discord = require('discord.js');
 module.exports = {
 	name: 'avatar',
-	description: 'Get avatar of a user',
+	description: 'Get the avatar of a user',
+	cooldown: '5',
 	aliases:['av', 'pfp'],
 	execute(client, message, args) {
 		let embed = '';

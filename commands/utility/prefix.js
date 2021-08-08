@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'prefix',
 	description: 'Set this guilds prefix',
-	cooldown: '5',
+	cooldown: '10',
 	aliases: ['setprefix', 'guildprefix'],
 	args: true,
 	guildOnly: true,

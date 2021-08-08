@@ -1,4 +1,6 @@
 module.exports = {
 	name: 'error',
-	description: 'Triggers An Error.',
+	description: 'Triggers an error.',
+	aliases: ['err'],
+	cooldown: '5',
 };
