@@ -19,6 +19,13 @@ module.exports = {
 			|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 		if (!command) return;
 
+		if (!client.data.get('cmdCounterTotal')) client.data.set('cmdCounterTotal', 0);
+		try {
+			client.data.set('cmdCounterTotal', parseInt(client.data.get('cmdCounterTotal')) + 1);
+		} catch (err) {
+			console.log('Can no longer store commands!');
+		}
+
 		// Cooldowns System
 		const { cooldowns } = client;
 		if (!cooldowns.has(command.name)) cooldowns.set(command.name, new Collection());
