@@ -4,7 +4,6 @@ module.exports = {
 	name: 'message',
 	on: true,
 	execute(client, message) {
-
 		// Set Prefix
 		client.data.ensure(`guild.${message.guild.id}.prefix`, '!');
 
@@ -40,6 +39,19 @@ module.exports = {
 		// Return If Command Needs Args But No Args Were Provided
 		if (command.args && !args.length) return message.channel.send('This command requires args!');
 
+		// Check If Command Is Guild Only
+		if (command.guildOnly === true && message.guild === null) {
+			return message.reply('This command is guild only!');
+		}
+
+		// Permissions System
+		if (command.permissions) {
+			if (command.permissions === 'OWNER' && message.guild.ownerID != message.author.id) {
+				return message.channel.send('Only the server owner can run that command!');
+			} else if (!message.member.hasPermission(command.permissions)) {
+				return message.reply('You don\'t have permission to run that command!');
+			}
+		}
 
 		// Run Command
 		try {
