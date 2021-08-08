@@ -14,8 +14,7 @@ module.exports = {
 				.setTitle('Success!')
 				.setDescription(`My prefix is now \`${client.data.get(`guild.${message.guild.id}.prefix`)}\` `);
 			message.channel.send(embed);
-		}
-		else {
+		} else {
 			message.channel.send('Invalid Permissions.');
 			return;
 		}

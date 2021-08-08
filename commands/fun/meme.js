@@ -6,7 +6,7 @@ module.exports = {
 	description: 'Send a random meme!',
 	cooldown: '5',
 	aliases: ['givememe', 'gibmeme', 'plsmeme', 'memes'],
-	async execute(client, message, args) {
+	async execute(client, message) {
 		axios.get('https://meme-api.herokuapp.com/gimme/1')
 			.then(function(response) {
 				const embed = new MessageEmbed()

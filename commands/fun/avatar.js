@@ -11,8 +11,7 @@ module.exports = {
 				.setColor('BLUE')
 				.setImage(message.author.avatarURL({ dynamic:true }) + '?size=1024')
 				.setURL(message.author.avatarURL({ dynamic:true }) + '?size=1024');
-		}
-		else {
+		} else {
 			embed = new discord.MessageEmbed()
 				.setTitle(`Avatar of ${message.mentions.users.first().username}`)
 				.setColor('BLUE')

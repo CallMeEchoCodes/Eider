@@ -5,7 +5,7 @@ module.exports = {
 	cooldown: '5',
 	aliases: ['latency', 'pong'],
 	async execute(client, message) {
-		message.channel.send('**The Ping-inator!**\nPinging...').then((msg) => {
+		message.channel.send('Pinging...').then((msg) => {
 			const ping = msg.createdTimestamp - message.createdTimestamp;
 			const embed = new Discord.MessageEmbed()
 				.setColor('RANDOM')
