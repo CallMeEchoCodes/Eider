@@ -4,11 +4,15 @@ module.exports = {
 	name: 'message',
 	on: true,
 	execute(client, message) {
+
+		// Set Prefix
 		client.data.ensure(`guild.${message.guild.id}.prefix`, '!');
 
 		const prefix = client.data.get(`guild.${message.guild.id}.prefix`);
 
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+		// Define comand And args
 		const args = message.content.slice(prefix.length).split(/ +/);
 		const commandName = args.shift().toLowerCase();
 
@@ -16,6 +20,7 @@ module.exports = {
 			|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 		if (!command) return;
 
+		// Cooldowns System
 		const { cooldowns } = client;
 		if (!cooldowns.has(command.name)) cooldowns.set(command.name, new Collection());
 		const now = Date.now();
@@ -31,8 +36,12 @@ module.exports = {
 		timestamps.set(message.author.id, now);
 		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
+
+		// Return If Command Needs Args But No Args Were Provided
 		if (command.args && !args.length) return message.channel.send('This command requires args!');
 
+
+		// Run Command
 		try {
 			command.execute(client, message, args);
 		} catch (err) {
