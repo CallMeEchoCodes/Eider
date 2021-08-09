@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'ping',
 	description: 'See the bots ping.',
@@ -7,11 +7,11 @@ module.exports = {
 	async execute(client, message) {
 		message.channel.send('Pinging...').then((msg) => {
 			const ping = msg.createdTimestamp - message.createdTimestamp;
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setColor('RANDOM')
 				.setTitle('Pong!')
 				.setDescription(`The bots ping is ${ping}ms.`);
-			message.channel.send(embed);
+			message.channel.send({ embeds: [embed] });
 			msg.delete();
 		});
 	},

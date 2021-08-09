@@ -1,5 +1,5 @@
 module.exports = {
-	name:'message',
+	name:'messageCreate',
 	execute(client) {
 		if (!client.data.get('msgCounterTotal')) client.data.set('msgCounterTotal', 0);
 		try {

@@ -15,7 +15,7 @@ module.exports = {
 					.setImage(response.data.memes[0].url)
 					.setURL(response.data.memes[0].postLink)
 					.setFooter(`Author: ${response.data.memes[0].author}`);
-				message.channel.send(embed);
+				message.channel.send({ embeds: [embed] });
 			});
 	},
 };

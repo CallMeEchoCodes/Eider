@@ -1,7 +1,7 @@
 const { Collection, MessageEmbed } = require('discord.js');
 
 module.exports = {
-	name: 'message',
+	name: 'messageCreate',
 	on: true,
 	execute(client, message) {
 		// Set Prefix
@@ -26,23 +26,6 @@ module.exports = {
 			console.log('Can no longer store commands!');
 		}
 
-		// Cooldowns System
-		const { cooldowns } = client;
-		if (!cooldowns.has(command.name)) cooldowns.set(command.name, new Collection());
-		const now = Date.now();
-		const timestamps = cooldowns.get(command.name);
-		const cooldownAmount = (command.cooldown || 0.5) * 1000;
-		if (timestamps.has(message.author.id)) {
-			const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-			if (now < expirationTime) {
-				const timeLeft = (expirationTime - now) / 1000;
-				return message.reply(`\`${prefix + commandName}\` is on cooldown for ${timeLeft.toFixed(1)} more second(s)`).then(x => {x.delete({ timeout:3000 });});
-			}
-		}
-		timestamps.set(message.author.id, now);
-		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-
-
 		// Return If Command Needs Args But No Args Were Provided
 		if (command.args && !args.length) return message.reply('That command requires arguments!');
 
@@ -53,12 +36,28 @@ module.exports = {
 
 		// Permissions System
 		if (command.permissions) {
-			if (command.permissions === 'OWNER' && message.guild.ownerID != message.author.id) {
+			if (command.permissions === 'OWNER' && message.guild.ownerId != message.author.id) {
 				return message.reply('Only the server owner can run that command!');
-			} else if (!message.member.hasPermission(command.permissions)) {
+			} else if (!message.member.permissions.has([`Permissions.${command.permissions}`])) {
 				return message.reply('You don\'t have permission to run that command!');
 			}
 		}
+
+		// Cooldowns System
+		const { cooldowns } = client;
+		if (!cooldowns.has(command.name)) cooldowns.set(command.name, new Collection());
+		const now = Date.now();
+		const timestamps = cooldowns.get(command.name);
+		const cooldownAmount = (command.cooldown || 0.5) * 1000;
+		if (timestamps.has(message.author.id)) {
+			const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+			if (now < expirationTime) {
+				const timeLeft = (expirationTime - now) / 1000;
+				return message.reply(`\`${prefix + commandName}\` is on cooldown for ${timeLeft.toFixed(1)} more second(s)`);
+			}
+		}
+		timestamps.set(message.author.id, now);
+		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
 		// Run Command
 		try {
@@ -66,11 +65,11 @@ module.exports = {
 		} catch (err) {
 			const embed = new MessageEmbed()
 				.setTitle('Error')
-				.setDescription(err)
+				.setDescription(`${err}`)
 				.setThumbnail('https://images-ext-1.discordapp.net/external/9yiAQ7ZAI3Rw8ai2p1uGMsaBIQ1roOA4K-ZrGbd0P_8/https/cdn1.iconfinder.com/data/icons/web-essentials-circle-style/48/delete-512.png?width=461&height=461')
 				.setColor('RED')
 				.setTimestamp();
-			message.channel.send(embed);
+			message.channel.send({ embeds: [embed] });
 		}
 	},
 };
