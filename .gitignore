@@ -9,5 +9,5 @@ thumbs.db
 /.idea
 
 # Config Files
-config.json
 /data
+.env
