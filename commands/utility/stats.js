@@ -1,12 +1,13 @@
 module.exports = {
 	name: 'stats',
 	description: 'Show bot stats.',
+	cooldown: '5',
 	async execute(client, message) {
 		const embed = {
 			color: 'BLURPLE',
 			title: 'Hi! I\'m Eider.',
 			thumbnail: {
-				url: 'https://i.imgur.com/Z73PC8h.gif',
+				url: 'https://cdn.discordapp.com/attachments/858855894204678206/874231112686247956/eider-animate.gif',
 			},
 			fields: [
 				{
