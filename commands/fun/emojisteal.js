@@ -35,9 +35,10 @@ module.exports = {
 		if (!args[1] && args[0]) {
 			const msg = args[0].match(/<a?:.+:\d+>/gm);
 			let url = '';
-			if (emoji = /<:.+:(\d+)>/gm.exec(msg)) {
+			const emoji = '';
+			if (emoji == /<:.+:(\d+)>/gm.exec(msg)) {
 				url = 'https://cdn.discordapp.com/emojis/' + emoji[1] + '.png?v=1';
-			} else if (emoji = /<a:.+:(\d+)>/gm.exec(msg)) {
+			} else if (emoji == /<a:.+:(\d+)>/gm.exec(msg)) {
 				url = 'https://cdn.discordapp.com/emojis/' + emoji[1] + '.gif?v=1';
 			}
 			if (!emoji) return message.channel.send({ embeds: [deniedEmbed('There was no emoji found.')] });
@@ -45,7 +46,7 @@ module.exports = {
 			let sliceamount = 2;
 			if (emoji[0].slice(1, 2) == 'a') sliceamount = 3;
 			const emojiname = emoji[0].slice(sliceamount, (emoji[0].search(emoji[1])) - 1);
-			if (message.guild.emojis.cache.find(emoji => emoji.name == emojiname)) return message.channel.send({ embeds: [deniedEmbed(`An emoji with the name :${emojiname}: already exists`)] });
+			if (message.guild.emojis.cache.find(emote => emote.name == emojiname)) return message.channel.send({ embeds: [deniedEmbed(`An emoji with the name :${emojiname}: already exists`)] });
 			message.guild.emojis.create(url, emojiname).catch(err => {message.channel.send({ embeds: [deniedEmbed(`An error has occurred. \n${err}`)] });});
 			message.channel.send(`Created :${emojiname}:`);
 		}
