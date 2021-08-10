@@ -10,7 +10,8 @@
     "chalk": "^4.1.2",
     "discord.js": "^13.0.1",
     "dotenv": "^10.0.0",
-    "enmap": "^5.8.7"
+    "enmap": "^5.8.7",
+    "systeminformation": "^5.8.0"
   },
   "devDependencies": {
     "eslint": "^7.31.0"
