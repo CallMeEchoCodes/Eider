@@ -7,6 +7,7 @@ thumbs.db
 
 # IDE Things
 /.idea
+/.vscode
 
 # Config Files
 /data
