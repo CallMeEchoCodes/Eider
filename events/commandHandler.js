@@ -1,4 +1,5 @@
-const { Collection, MessageEmbed } = require('discord.js');
+// eslint-disable-next-line no-unused-vars
+const { Collection, MessageEmbed, Permissions } = require('discord.js');
 
 module.exports = {
 	name: 'messageCreate',
@@ -12,7 +13,7 @@ module.exports = {
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 		// Define comand And args
-		const args = message.content.slice(prefix.length).split(/ +/);
+		let args = message.content.slice(prefix.length).split(/ +/);
 		const commandName = args.shift().toLowerCase();
 
 		const command = client.commands.get(commandName)
@@ -28,6 +29,9 @@ module.exports = {
 
 		// Return If Command Needs Args But No Args Were Provided
 		if (command.args && !args.length) return message.reply('That command requires arguments!');
+		if (command.argsfull) {
+			args = message.content.slice(prefix.length).slice(commandName.length);
+		}
 
 		// Check If Command Is Guild Only
 		if (command.guildOnly === true && message.guild === null) {
@@ -36,9 +40,8 @@ module.exports = {
 
 		// Permissions System
 		if (command.permissions) {
-			if (command.permissions === 'OWNER' && message.guild.ownerId != message.author.id) {
-				return message.reply('Only the server owner can run that command!');
-			} else if (!message.member.permissions.has([`Permissions.${command.permissions}`])) {
+			console.log(message.member.permissions.has(command.permissions));
+			if (message.member.permissions.has(command.permissions) === false) {
 				return message.reply('You don\'t have permission to run that command!');
 			}
 		}
