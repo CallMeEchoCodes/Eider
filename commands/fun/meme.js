@@ -4,9 +4,9 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'meme',
 	description: 'Send a random meme!',
-	cooldown: '5',
-	aliases: ['givememe', 'gibmeme', 'plsmeme', 'memes'],
-	async execute(client, message) {
+	cooldown: 5,
+	aliases: [ 'givememe', 'gibmeme', 'plsmeme', 'memes' ],
+	async execute(message) {
 		axios.get('https://meme-api.herokuapp.com/gimme/1')
 			.then(function(response) {
 				const embed = new MessageEmbed()

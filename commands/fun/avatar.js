@@ -2,9 +2,9 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'avatar',
 	description: 'Get the avatar of a user',
-	cooldown: '5',
-	aliases:['av', 'pfp'],
-	execute(client, message, args) {
+	cooldown: 5,
+	aliases:[ 'av', 'pfp' ],
+	execute(message, args) {
 		let embed = '';
 		if (!args[0]) {
 			embed = new MessageEmbed()

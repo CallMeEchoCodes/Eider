@@ -1,13 +1,14 @@
-const Discord = require('discord.js');
+const { Permissions, MessageEmbed } = require('discord.js');
+
 module.exports = {
-	name:'emojisteal',
-	aliases:['emojigrab', 'emotesteal', 'emotegrab'],
-	description:'Steal emojis with or without nitro!',
-	cooldown:2,
-	permissions: 'MANAGE_EMOJIS',
+	name: 'emojisteal',
+	aliases: [ 'emojigrab', 'emotesteal', 'emotegrab' ],
+	description: 'Steal emojis with or without nitro!',
+	cooldown: 2,
+	permissions: [ Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS ],
 	async execute(client, message, args) {
 		function deniedEmbed(err) {
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setTitle('Error')
 				.setDescription(err)
 				.setThumbnail('https://images-ext-1.discordapp.net/external/9yiAQ7ZAI3Rw8ai2p1uGMsaBIQ1roOA4K-ZrGbd0P_8/https/cdn1.iconfinder.com/data/icons/web-essentials-circle-style/48/delete-512.png?width=461&height=461')
@@ -19,7 +20,7 @@ module.exports = {
 		const commandName = message.content.slice(prefix.length).split(' ').shift().toLowerCase();
 		if (!args[0]) {
 			const msgsteal = await message.channel.send(`emojisteal ${message.author.id}`);
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setTitle('Emoji Steal')
 				.setColor('ORANGE')
 				.setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))

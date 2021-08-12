@@ -1,7 +1,8 @@
 module.exports = {
 	name: 'stats',
-	description: 'Show bot stats.',
-	cooldown: '5',
+	description: 'Show bot statistics.',
+	aliases: [ 'statistics' ],
+	cooldown: 5,
 	async execute(client, message) {
 		const embed = {
 			color: 'BLURPLE',

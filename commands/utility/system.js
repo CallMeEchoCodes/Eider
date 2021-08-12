@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 const si = require('systeminformation');
 const nodeOS = require('os');
 module.exports = {
-	name:'system',
-	aliases:['systeminfo', 'sysinfo', 'sysstat', 'sysstats'],
-	cooldown:20,
-	description:'Get information of the bot process and server hardware',
+	name: 'system',
+	aliases: [ 'systeminfo', 'sysinfo', 'sysstat', 'sysstats' ],
+	cooldown: 20,
+	description: 'Get information of the bot process and server hardware',
 	async execute(client, message) {
 		function convToDays(totalSeconds) {
 			const days = Math.floor(totalSeconds / 86400);
