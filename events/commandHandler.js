@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-const { Collection, MessageEmbed, Permissions } = require('discord.js');
+const { Collection, MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'messageCreate',
