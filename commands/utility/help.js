@@ -33,7 +33,6 @@ module.exports = {
 				embed.addField(folder, array.join('\n'), true);
 			}
 
-			console.log(embed);
 			message.channel.send({ embeds: [ embed ] });
 		} else {
 			const search = args.join(' ');
