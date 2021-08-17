@@ -2,7 +2,8 @@ module.exports = {
 	name: 'roll',
 	description: 'Pick a number between x and y',
 	cooldown: 2,
-	args: true,
+	args: 2,
+	usage: 'roll <min> <max>',
 	async execute(message, args) {
 		args.forEach((item)=>{args[args.indexOf(item)] = parseInt(item);});
 		if (!args[1]) return message.reply('I Need A Second Number!');

@@ -6,7 +6,8 @@ module.exports = {
 	cooldown: 10,
 	permissions: [ Permissions.FLAGS.ADMINISTRATOR ],
 	aliases: [ 'setprefix', 'guildprefix' ],
-	args: true,
+	usage: 'prefix <newprefix>',
+	args: 1,
 	guildOnly: true,
 	async execute(client, message, args) {
 		client.data.set(`guild.${message.guild.id}.prefix`, args[0]);

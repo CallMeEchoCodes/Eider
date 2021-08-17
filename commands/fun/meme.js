@@ -5,6 +5,7 @@ module.exports = {
 	name: 'meme',
 	description: 'Send a random meme!',
 	cooldown: 5,
+	usage: 'meme',
 	aliases: [ 'givememe', 'gibmeme', 'plsmeme', 'memes' ],
 	async execute(message) {
 		axios.get('https://meme-api.herokuapp.com/gimme/1')

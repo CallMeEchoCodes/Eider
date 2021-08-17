@@ -4,6 +4,7 @@ module.exports = {
 	name: 'emojisteal',
 	aliases: [ 'emojigrab', 'emotesteal', 'emotegrab' ],
 	description: 'Steal emojis with or without nitro!',
+	usage: 'emojisteal [emojiurl] [emojiname]',
 	cooldown: 2,
 	permissions: [ Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS ],
 	async execute(client, message, args) {

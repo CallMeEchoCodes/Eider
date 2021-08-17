@@ -2,6 +2,7 @@ module.exports = {
 	name: 'coinflip',
 	description: 'Flip A Coin!',
 	cooldown: 2,
+	usage: 'coinflip',
 	aliases: [ 'flip', 'coin' ],
 	async execute(message) {
 		const flip = ['heads', 'tails'];

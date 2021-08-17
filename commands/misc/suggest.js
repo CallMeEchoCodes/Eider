@@ -4,8 +4,8 @@ module.exports = {
 	name: 'suggest',
 	description: 'Suggest Something!',
 	cooldown: 10,
-	args: true,
-	argsfull: true,
+	usage: 'suggest <suggestion>',
+	args: 'full',
 	async execute(client, message, args) {
 		client.data.ensure(`guild.${message.guild.id}.suggestTotal`, 0);
 		client.data.set(`guild.${message.guild.id}.suggestTotal`, client.data.get(`guild.${message.guild.id}.suggestTotal`) + 1);

@@ -14,6 +14,7 @@ module.exports = {
 				.setImage(message.author.displayAvatarURL() + '?size=1024')
 				.setURL(message.author.displayAvatarURL() + '?size=1024');
 		} else {
+			if (!args[0].match(/<@!*&*[0-9]+>/)) return message.reply('Thats not a user!');
 			embed = new MessageEmbed()
 				.setTitle(`Avatar of ${message.mentions.users.first().username}`)
 				.setColor('BLUE')

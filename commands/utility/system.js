@@ -6,6 +6,7 @@ module.exports = {
 	name: 'system',
 	aliases: [ 'systeminfo', 'sysinfo', 'sysstat', 'sysstats' ],
 	cooldown: 20,
+	usage: 'system',
 	description: 'Get information of the bot process and server hardware',
 	async execute(client, message) {
 		function convToDays(totalSeconds) {

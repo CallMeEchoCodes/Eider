@@ -58,22 +58,21 @@ module.exports = {
 			const command = results[0];
 			if (command.aliases) {
 				for (const alias in command.aliases) {
-					aliases.push(`\`${prefix}${command.aliases[alias]}\``);
+					aliases.push(`\`${prefix + command.aliases[alias]}\``);
 				}
-				aliases = aliases.join(',');
+				aliases = aliases.join(', ');
 			} else {
 				aliases = `No aliases exist for ${prefix + command.name}`;
 			}
 			if (command.usage) {
-				usage = `\`${prefix}${command.usage}\``;
+				usage = `\`${prefix + command.usage}\``;
 			} else {usage = 'Not Provided';}
 			const embed = new MessageEmbed()
-				.setTitle(prefix + command.name)
+				.setTitle(`${prefix + command.name}`)
 				.setDescription(command.description)
-				.addField('Aliases', aliases)
-				.setColor('BLURPLE')
-				.addField('Usage', usage)
-				.setFooter('Eider', 'https://cdn.discordapp.com/attachments/858855894204678206/874231112686247956/eider-animate.gif');
+				.addField('Aliases', aliases, true)
+				.addField('Usage', usage, true)
+				.setColor('BLURPLE');
 
 			message.channel.send({ embeds: [embed] });
 		}
