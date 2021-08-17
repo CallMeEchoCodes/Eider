@@ -11,7 +11,7 @@ module.exports = {
 
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-		// Define comand And args
+		// Define command And args
 		let args = message.content.slice(prefix.length).split(/ +/);
 		const commandName = args.shift().toLowerCase();
 
