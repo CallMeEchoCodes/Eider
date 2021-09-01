@@ -2,7 +2,7 @@ const { Permissions, MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'emojisteal',
-	aliases: [ 'emojigrab', 'emotesteal', 'emotegrab' ],
+	aliases: [ 'emojigrab', 'emotesteal', 'emotegrab', 'stealemoji', 'stealemote' ],
 	description: 'Steal emojis with or without nitro!',
 	usage: 'emojisteal [emojiurl] [emojiname]',
 	cooldown: 2,
@@ -32,7 +32,7 @@ module.exports = {
 			if (!args[1]) return message.channel.send({ embeds: [deniedEmbed('You need to specify a name when adding emojis via url')] });
 			if (message.guild.emojis.cache.find(emoji => emoji.name == args[1])) return message.channel.send({ embeds: [deniedEmbed(`An emoji with the name :${args[1]}: already exists`)] });
 			message.guild.emojis.create(args[0], args[1]).catch(err => message.channel.send({ embeds: [deniedEmbed(`There was an unknown issue. \n${err}`)] }));
-			message.channel.send(`Created :${args[1]}:`);
+			message.channel.send(`Stolen :${args[1]}:`);
 		}
 		if (!args[1] && args[0]) {
 			const msg = args[0].match(/<a?:.+:\d+>/gm);
@@ -50,7 +50,7 @@ module.exports = {
 			const emojiname = emoji[0].slice(sliceamount, (emoji[0].search(emoji[1])) - 1);
 			if (message.guild.emojis.cache.find(emote => emote.name == emojiname)) return message.channel.send({ embeds: [deniedEmbed(`An emoji with the name :${emojiname}: already exists`)] });
 			message.guild.emojis.create(url, emojiname).catch(err => {message.channel.send({ embeds: [deniedEmbed(`An error has occurred. \n${err}`)] });});
-			message.channel.send(`Created :${emojiname}:`);
+			message.channel.send(`Stolen :${emojiname}:`);
 		}
 	},
 };
