@@ -18,9 +18,13 @@ module.exports = {
 		const embed = new MessageEmbed()
 			.setTitle(`Suggestion #${suggestionnum}`)
 			.setDescription(args)
+			.setColor('BLUE')
 			.setAuthor(message.author.tag, message.author.avatarURL());
 		const channel = client.channels.cache.get(client.data.get(`guild.${message.guild.id}.suggestChannel`));
-		channel.send({ embeds: [embed] });
+		channel.send({ embeds: [embed] }).then(embedMessage => {
+			embedMessage.react('⬆️');
+			embedMessage.react('⬇️');
+		});
 		message.channel.send(`Suggestion #${suggestionnum} submitted!`);
 	},
 };
