@@ -1,0 +1,13 @@
+{
+    "token":"",
+    "clientId":"",
+    "guildId":"",
+    "presence": {
+        "status": "",
+        "activities": [
+            {
+                "name":""
+            }
+        ]
+    }
+}
