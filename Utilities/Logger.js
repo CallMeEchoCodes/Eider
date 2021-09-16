@@ -3,9 +3,10 @@ const moment = require('moment')
 
 module.exports.Logger = class Logger {
   /**
-     * @param {string} content The text to log
-     * @param {string} type The type of output
-     */
+   * A Basic Logger
+   * @param {String} content - The text to log
+   * @param {String} type    - The type of output
+  */
   static log (content, type) {
     const timestamp = chalk.gray(moment().format('kk:mm:ss'))
     switch (type) {
