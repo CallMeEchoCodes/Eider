@@ -5,6 +5,14 @@ const { readdirSync } = require('fs')
 module.exports.Bot = class Bot extends Client {
   constructor () {
     const config = require('../config.json')
+
+    /**
+     * Options for the client
+     * @type {Object}
+     * @property {Discord.Presence} presence - Discord Presence Data
+     * @property {String[]} partials         - Client Partials
+     * @property {Discord.Intents[]} intents - Client Intents
+     */
     const props = {
       presence: config.presence,
       partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
@@ -13,8 +21,21 @@ module.exports.Bot = class Bot extends Client {
 
     super(props)
 
+    /**
+     * Options for the bot
+     * @type {Object}
+     * @property {String} token           - The bot token used to log in
+     * @property {String} clientId        - The bots user id used to register slash commands
+     * @property {String} guildId         - A guild id used to register guild specific slash commands
+     * @property {String} owner           - The id of the bot owner, currently unused
+     * @property {Discord.Presence} presence        - A presence object used for the bots presence data
+     */
     this.config = config
 
+    /**
+     * A collection of the bots commands
+     * @type {Discord.Collection}
+     */
     this.commands = new Collection()
 
     const eventFiles = readdirSync('./events').filter(file => file.endsWith('.js'))
@@ -42,6 +63,10 @@ module.exports.Bot = class Bot extends Client {
     }
   }
 
+  /**
+   * Logs the bot in
+   * @returns {Discord.Client} A discord client
+   */
   login (token) {
     if (!this.config.token) {
       Logger.log('You didn\'t provide a token in config.json!', 'error')
