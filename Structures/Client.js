@@ -38,8 +38,8 @@ module.exports.Bot = class Bot extends Client {
      */
     this.commands = new Collection()
 
-    const eventFiles = readdirSync('./events').filter(file => file.endsWith('.js'))
-    const commandFolders = readdirSync('./commands')
+    const eventFiles = readdirSync('./Events').filter(file => file.endsWith('.js'))
+    const commandFolders = readdirSync('./Commands')
 
     for (const file of eventFiles) {
       const event = new (require(`../Events/${file}`))(this)
@@ -52,7 +52,7 @@ module.exports.Bot = class Bot extends Client {
     for (const folder of commandFolders) {
       if (folder.endsWith('.js')) return Logger.log(`Command ${folder} is not in a subdirectory! It has been ignored, please move it.`, 'warn')
 
-      const commandFiles = readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'))
+      const commandFiles = readdirSync(`./Commands/${folder}`).filter(file => file.endsWith('.js'))
 
       for (const file of commandFiles) {
         const command = new (require(`../Commands/${folder}/${file}`))(this)
