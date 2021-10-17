@@ -9,6 +9,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/strict-boolean-expressions': 0,
     '@typescript-eslint/restrict-template-expressions': 0,
-    '@typescript-eslint/restrict-plus-operands': 0
+    '@typescript-eslint/restrict-plus-operands': 0,
+    'no-void': 0
   }
 }
