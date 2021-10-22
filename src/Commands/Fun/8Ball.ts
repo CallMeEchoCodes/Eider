@@ -4,7 +4,7 @@ import type { CommandInteraction } from 'discord.js'
 import type { Command } from '../../Types/Command'
 import type { Bot } from '../../Structures/Client'
 
-const Ping: Command = {
+const EightBall: Command = {
   data: new SlashCommandBuilder()
     .setName('8ball')
     .setDescription('See the bots latency.')
@@ -52,4 +52,4 @@ const Ping: Command = {
   }
 }
 
-module.exports = Ping
+module.exports = EightBall
