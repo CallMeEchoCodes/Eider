@@ -2,7 +2,7 @@ import type { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from '@d
 import type { PermissionResolvable } from 'discord.js'
 
 export type Command = {
-  data: SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder
+  data: SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
   guildonly: boolean
   permissions: PermissionResolvable[]
   cooldown?: number
