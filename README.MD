@@ -20,7 +20,7 @@
 <h3 align="center">Eider</h3>
 
   <p align="center">
-    The extra fluff that you never knew you needed
+    The extra fluff on Discord that you never knew you needed
     <br />
     <a href="https://github.com/CallMeEchoCodes/Eider"><strong>Explore the docs »</strong></a>
     <br />
