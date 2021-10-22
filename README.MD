@@ -20,7 +20,7 @@
 <h3 align="center">Eider</h3>
 
   <p align="center">
-    Yet Another Carl Bot Replacement
+    The extra fluff that you never knew you needed
     <br />
     <a href="https://github.com/CallMeEchoCodes/Eider"><strong>Explore the docs »</strong></a>
     <br />
