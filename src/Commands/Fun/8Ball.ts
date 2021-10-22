@@ -13,9 +13,6 @@ const EightBall: Command = {
       option.setName('question')
         .setDescription('The question to answer')
         .setRequired(true)),
-  guildonly: false,
-  cooldown: 5,
-  permissions: [],
 
   async run (Client: Bot, Interaction: CommandInteraction): Promise<void> {
     const answers = [

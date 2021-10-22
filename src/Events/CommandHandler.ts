@@ -15,9 +15,7 @@ const CommandHandler: Event = {
 
     if (Command.guildonly && !Interaction.guild) return await Interaction.reply({ content: 'That command can only be used in a guild!', ephemeral: true })
 
-    if (!Client.cooldowns.has(Command.data.name)) {
-      Client.cooldowns.set(Command.data.name, new Collection())
-    }
+    if (!Client.cooldowns.has(Command.data.name)) Client.cooldowns.set(Command.data.name, new Collection())
 
     const now = Date.now()
     const timestamps = Client.cooldowns.get(Command.data.name)
@@ -36,7 +34,7 @@ const CommandHandler: Event = {
     setTimeout(() => timestamps.delete(Interaction.user.id), cooldownAmount)
 
     const Member = Interaction.member as GuildMember // Required for the permissions check to work. This is caused by Interaction.member being ?GuildMember | ?APIGuildMember instead of ?GuildMember.
-    if (!Member.permissions.has(Command.permissions)) return await Interaction.reply({ content: 'You don\'t have permission to use that command!', ephemeral: true })
+    if (Command.permissions !== undefined) if (!Member.permissions.has(Command.permissions)) return await Interaction.reply({ content: 'You don\'t have permission to use that command!', ephemeral: true })
 
     try {
       Command.run(Client, Interaction)

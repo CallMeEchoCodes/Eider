@@ -8,9 +8,6 @@ const Ping: Command = {
   data: new SlashCommandBuilder()
     .setName('ping')
     .setDescription('See the bots latency.'),
-  guildonly: false,
-  cooldown: 5,
-  permissions: [],
 
   async run (Client: Bot, Interaction: CommandInteraction): Promise<void> {
     const embed = new MessageEmbed()

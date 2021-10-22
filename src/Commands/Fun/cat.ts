@@ -9,9 +9,6 @@ const Cat: Command = {
   data: new SlashCommandBuilder()
     .setName('cat')
     .setDescription('Replies with an adorable cat 😺!'),
-  guildonly: false,
-  cooldown: 5,
-  permissions: [],
 
   async run (Client: Bot, Interaction: CommandInteraction): Promise<void> {
     type CatObj = {

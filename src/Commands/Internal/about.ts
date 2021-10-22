@@ -8,9 +8,6 @@ const About: Command = {
   data: new SlashCommandBuilder()
     .setName('about')
     .setDescription('Shows info about the bot.'),
-  guildonly: false,
-  cooldown: 5,
-  permissions: [],
 
   async run (Client: Bot, Interaction: CommandInteraction): Promise<void> {
     const embed = new MessageEmbed()

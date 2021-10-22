@@ -19,9 +19,7 @@ const GeometryDash: Command = {
         .setName('search')
         .setDescription('Search for a level')
         .addStringOption(option => option.setName('searchterm').setDescription('What To Search For').setRequired(true))),
-  guildonly: false,
   cooldown: 10,
-  permissions: [],
 
   async run (Client: Bot, Interaction: CommandInteraction): Promise<void> {
     if (Interaction.options.getSubcommand() === 'level') {
