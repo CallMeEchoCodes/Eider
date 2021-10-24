@@ -111,15 +111,19 @@ Eider is nowhere near done but i hope it can provide some use to you guys making
   ```sh
   pnpx tsc
   ```
-
-5. Run `Deploy.ts`
+5. Change Directory
   ```sh
-  node ./build/Deploy.js
+  cd ./build
   ```
 
-6. Run the bot!
+6. Run `Deploy.ts`
   ```sh
-  node ./build/index.js
+  node ./Deploy.js
+  ```
+
+7. Run the bot!
+  ```sh
+  node ./index.js
   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
