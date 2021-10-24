@@ -18,6 +18,8 @@ const Cat: Command = {
     const { data } = await axios.get('https://aws.random.cat/meow')
     const res = data as CatObj
 
+    if (res.file === undefined) return await Interaction.reply({ content: 'There was an error while executing that command!', ephemeral: true })
+
     const embed = new MessageEmbed()
       .setColor('RANDOM')
       .setTitle('Meow! Here\'s your adorable cat picture 🐱.')
