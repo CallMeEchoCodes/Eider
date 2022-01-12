@@ -81,7 +81,7 @@ const GeometryDash: Command = {
           ])
         Interaction.editReply({ embeds: [embed] })
       }
-    } else if (Interaction.options.getSubcommand() === 'search') return await Interaction.reply({ content: 'Comming Soon', ephemeral: true })
+    } else if (Interaction.options.getSubcommand() === 'search') return await Interaction.reply({ content: 'Coming Soon', ephemeral: true })
   }
 }
 module.exports = GeometryDash
