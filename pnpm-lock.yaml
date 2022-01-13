@@ -12,6 +12,7 @@ specifiers:
   eslint-plugin-import: ^2.24.2
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^5.1.0
+  systeminformation: ^5.10.0
   tslog: ^3.2.2
   typescript: ^4.4.3
 
@@ -20,6 +21,7 @@ dependencies:
   '@discordjs/rest': 0.1.0-canary.0
   axios: 0.23.0
   discord.js: 13.2.0
+  systeminformation: 5.10.0
   tslog: 3.2.2
 
 devDependencies:
@@ -1757,6 +1759,13 @@ packages:
     dependencies:
       has-flag: 4.0.0
     dev: true
+
+  /systeminformation/5.10.0:
+    resolution: {integrity: sha512-9m05qqR8sQzWpW1q1/BXUiz1bnUXh7NkK/+w0MoSX7+dURYLj6e4zAkuBBWyTCKnhJjRsQXpoXiJCnakpZdJVA==}
+    engines: {node: '>=8.0.0'}
+    os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
+    hasBin: true
+    dev: false
 
   /table/6.7.2:
     resolution: {integrity: sha512-UFZK67uvyNivLeQbVtkiUs8Uuuxv24aSL4/Vil2PJVtMgU8Lx0CYkP12uCGa3kjyQzOSgV1+z9Wkb82fCGsO0g==}
