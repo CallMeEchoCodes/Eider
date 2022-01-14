@@ -1,7 +1,8 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import axios from 'axios'
+import Vibrant from 'node-vibrant'
 import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-import type { CommandInteraction } from 'discord.js'
+import type { CommandInteraction, ColorResolvable } from 'discord.js'
 import type { Command } from '../../Types/Command'
 import type { Bot } from '../../Structures/Client'
 
@@ -32,6 +33,8 @@ const Tweak: Command = {
       }>
     }
 
+    Interaction.deferReply()
+
     let author = 'null'
     const { data } = await axios.get(`https://api.canister.me/v1/community/packages/search?query=${Interaction.options.getString('query')}&searchFields=identifier,name,author,maintainer&responseFields=identifier,name,description,packageIcon,repository.uri,repository.name,author,latestVersion,depiction,section,price`)
     const res = data as CanisterResponse
@@ -39,11 +42,13 @@ const Tweak: Command = {
     try { if (res.data[0].name === undefined || res.data[0].name === null) return await Interaction.reply({ content: 'Your search returned no results!', ephemeral: true }) } catch { return await Interaction.reply({ content: 'Something went wrong. Try again', ephemeral: true }) }
     if (res.data[0].author === null || res.data[0].author === undefined) { author = 'Unknown' } else { author = res.data[0].author }
 
+    const color = await Vibrant.from(res.data[0].packageIcon || 'https://repo.packix.com/api/Packages/60bfb71987ca62001c6585e6/icon/download?size=medium&hash=2').getPalette()
+
     const row = new MessageActionRow()
       .addComponents(
         new MessageButton()
           .setStyle('LINK')
-          .setURL(res.data[0].depiction)
+          .setURL(res.data[0].depiction || 'https://404.github.io/')
           .setEmoji('🔍')
           .setLabel('View Depiction'),
         new MessageButton()
@@ -70,7 +75,7 @@ const Tweak: Command = {
       )
 
     const embed = new MessageEmbed()
-      .setColor('BLURPLE')
+      .setColor(color.Vibrant.hex as ColorResolvable)
       .setTitle(res.data[0].name)
       .setThumbnail(res.data[0].packageIcon || 'https://repo.packix.com/api/Packages/60bfb71987ca62001c6585e6/icon/download?size=medium&hash=2')
       .setDescription(res.data[0].description)
@@ -80,7 +85,7 @@ const Tweak: Command = {
       .addField('Repo', `[${res.data[0].repository.name}](${res.data[0].repository.uri})`, true)
       .addField('Bundle ID', res.data[0].identifier, true)
       .setFooter('Powered by Canister', 'https://cdn.discordapp.com/attachments/866173562120306699/931379303290142730/canister.png')
-    await Interaction.reply({ embeds: [embed], components: [row] })
+    await Interaction.editReply({ embeds: [embed], components: [row] })
   }
 }
 
