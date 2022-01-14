@@ -44,12 +44,12 @@ const Tweak: Command = {
 
     let color = null
 
-    if (!res.data[0].packageIcon.startsWith('http:') || !res.data[0].packageIcon.startsWith('https:')) {
-      color = '#fccc04'
-      res.data[0].packageIcon = undefined
-    } else {
+    if (res.data[0].packageIcon.startsWith('http:') || res.data[0].packageIcon.startsWith('https:')) {
       color = await Vibrant.from(res.data[0].packageIcon || 'https://repo.packix.com/api/Packages/60bfb71987ca62001c6585e6/icon/download?size=medium&hash=2').getPalette()
       color = color.Vibrant.hex
+    } else {
+      color = '#fccc04'
+      res.data[0].packageIcon = undefined
     }
     const row = new MessageActionRow()
       .addComponents(
