@@ -1,4 +1,14 @@
-build/
-node_modules
-.vscode
-src/config.json
+# dependencies
+/node_modules
+
+# System Files
+.DS_Store
+thumbs.db
+
+# IDE Things
+/.idea
+/.vscode
+
+# Config Files
+/data
+.env

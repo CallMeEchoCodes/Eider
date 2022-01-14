@@ -1,29 +1,19 @@
 {
-  "name": "typescript-bot-learning",
+  "name": "eider",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple Discord.js Discord Bot",
   "main": "index.js",
-  "scripts": {
-    "start": "tsc-watch"
-  },
-  "author": "",
+  "author": "CallMeEcho",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/builders": "^0.6.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "axios": "^0.23.0",
-    "discord.js": "^13.2.0",
-    "systeminformation": "^5.10.0",
-    "tslog": "^3.2.2"
+    "axios": "^0.21.2",
+    "chalk": "^4.1.2",
+    "discord.js": "^13.0.1",
+    "dotenv": "^10.0.0",
+    "enmap": "^5.8.7",
+    "systeminformation": "^5.8.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "eslint": "^7.32.0",
-    "eslint-config-standard-with-typescript": "^21.0.1",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "typescript": "^4.4.3"
+    "eslint": "^7.31.0"
   }
 }
