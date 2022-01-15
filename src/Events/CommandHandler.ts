@@ -35,6 +35,7 @@ const CommandHandler: Event = {
 
     const Member = Interaction.member as GuildMember // Required for the permissions check to work. This is caused by Interaction.member being ?GuildMember | ?APIGuildMember instead of ?GuildMember.
     if (Command.permissions !== undefined) if (!Member.permissions.has(Command.permissions)) return await Interaction.reply({ content: 'You don\'t have permission to use that command!', ephemeral: true })
+    if (Command.permissions !== undefined) if (!(await Member.guild.members.fetch(Client.config.clientID)).permissions.has(Command.permissions)) return await Interaction.reply({ content: 'I don\'t have permission to use that command!', ephemeral: true })
 
     try {
       Command.run(Client, Interaction)
