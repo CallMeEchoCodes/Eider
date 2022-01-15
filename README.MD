@@ -22,8 +22,6 @@
   <p align="center">
     The extra fluff on Discord that you never knew you needed
     <br />
-    <a href="https://github.com/CallMeEchoCodes/Eider"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://github.com/CallMeEchoCodes/Eider/issues">Report Bug</a>
     ·
