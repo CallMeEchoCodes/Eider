@@ -44,7 +44,6 @@ const Ping: Command = {
                       .setTitle(`System & Process Information for ${Client.user.username}`)
                       .setURL('https://discord.gg/fNPn8wa6J7')
                       .setTimestamp()
-                      .setFooter('Requested by ' + Interaction.user.tag, Interaction.user.displayAvatarURL({ dynamic: true }))
                       .addField('Process Information', `**Uptime** \n${uptime} \n**Serving** \n${Client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members \n**Running** \n${process.release.name} ${process.version}`)
                       .addField('System Information', `**Device Hostname** \n${os.hostname} \n**CPU** \n${cpu.cores} Core ${cpu.manufacturer} ${cpu.brand}@${cpu.speed}GHz ${process.config.variables.host_arch} \n**General CPU Load** \n${load.avgLoad}% \n**Device Uptime** \n${convToDays(nodeOS.uptime())} \n**Memory** \nTotal Memory: ${(mem.total / 1000000000).toFixed(2)}GB \nUsed Memory: ${(mem.used / 1000000000).toFixed(2)}GB \nFree Memory: ${(mem.free / 1000000000).toFixed(2)}GB \n**Operating System** \n${os.distro} ${os.release} ${os.arch}`)
                     Interaction.editReply({ embeds: [embed] })
