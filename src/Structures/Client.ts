@@ -14,7 +14,7 @@ export class Bot extends Client {
   cooldowns: Collection<unknown, Collection<unknown, any>>
   constructor () {
     const props: ClientOptions = {
-      presence: { activities: [{ name: 'Eider Canary - Typescript Update!' }] },
+      presence: configFile.presence,
       partials: ['CHANNEL'],
       intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILDS]
     }
