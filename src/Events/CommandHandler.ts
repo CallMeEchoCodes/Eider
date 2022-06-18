@@ -39,13 +39,6 @@ const CommandHandler: Event = {
 
     try {
       Command.run(Client, Interaction)
-
-      Client.database.createTable('overallData', ['messageCount BIGINT', 'commandCount BIGINT'])
-      const valueCommand = await Client.database.selectColumnAll('overallData', 'commandCount')
-      const valueMessage = await Client.database.selectColumnAll('overallData', 'messageCount')
-      if (valueCommand[0] === undefined) { return await Client.database.insert('overallData', ['messageCount', 'commandCount'], [0, 1]) }
-      Client.database.query(`UPDATE overallData SET commandCount = ${valueCommand[0].commandCount + 1}`)
-      Client.database.query(`UPDATE overallData SET messageCount = ${valueMessage[0].messageCount - 1}`)
     } catch (err) {
       Client.Logger.error(`Failed to run ${Command.data.name} for user ${Interaction.user.tag}.`, err)
       return await Interaction.reply({ content: 'There was an error while executing that command! My developer has been notified.', ephemeral: true })

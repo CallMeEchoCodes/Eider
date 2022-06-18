@@ -6,14 +6,12 @@ import type { ClientOptions } from 'discord.js'
 import type { Event } from '../Types/Event'
 import type { config } from '../Types/config'
 import type { Command } from '../Types/Command'
-import { Database } from './Database'
 
 export class Bot extends Client {
   config: config
   Logger: Logger
   commands: Collection<unknown, Command>
   cooldowns: Collection<unknown, Collection<unknown, any>>
-  database: Database
   constructor () {
     const props: ClientOptions = {
       presence: configFile.presence,
@@ -28,7 +26,6 @@ export class Bot extends Client {
 
     this.commands = new Collection()
     this.cooldowns = new Collection()
-    this.database = new Database(this)
   }
 
   public Login (): void {
