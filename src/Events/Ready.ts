@@ -5,7 +5,7 @@ const Ready: Event = {
   trigger: 'ready',
   type: 'once',
   run (Client: Bot): void {
-    Client.Logger.info(`Logged In As ${Client.user.tag} 🚀!`)
+    Client.Logger.log(`Logged In As ${Client.user.tag} 🚀!`, 'SUCCESS')
   }
 }
 

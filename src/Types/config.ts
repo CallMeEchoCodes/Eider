@@ -5,5 +5,6 @@ export type config = {
   clientID: string
   guildID: string
   presence: PresenceData
+  production: boolean
   apodToken?: string
 }

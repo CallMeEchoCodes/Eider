@@ -1,10 +1,10 @@
 import { readdirSync } from 'fs'
 import { REST } from '@discordjs/rest'
 import { Routes } from 'discord-api-types/v9'
-import { clientID, guildID, token } from './config.json'
-import { Logger } from 'tslog'
+import { clientID, guildID, token, production } from './config.json'
+import Simpllog from 'simpllog'
 
-const Log = new Logger()
+const Log = new Simpllog({ production: production })
 
 const commands = []
   .map(command => command.toJSON())
@@ -13,7 +13,7 @@ const commandFolders = readdirSync('./Commands')
 
 for (const folder of commandFolders) {
   if (folder.endsWith('.js')) {
-    Log.warn(`Command ${folder} is not in a subdirectory! It has been ignored, please move it.`)
+    Log.log(`Command ${folder} is not in a subdirectory! It has been ignored, please move it.`, 'WARN')
     continue
   }
 
@@ -22,7 +22,7 @@ for (const folder of commandFolders) {
   for (const file of commandFiles) {
     const command = require(`./Commands/${folder}/${file}`)
     commands.push(command.data.toJSON())
-    Log.info(`Deployed command ${file}`)
+    Log.log(`Deployed command ${file}`, 'INFO')
   }
 }
 
@@ -35,8 +35,8 @@ const rest = new REST({ version: '9' }).setToken(token);
       { body: commands }
     )
 
-    Log.info('Successfully registered application commands.')
+    Log.log('Successfully registered application commands.', 'SUCCESS')
   } catch (error) {
-    Log.error(error)
+    Log.log(error, 'ERROR')
   }
 })()

@@ -40,7 +40,7 @@ const CommandHandler: Event = {
     try {
       Command.run(Client, Interaction)
     } catch (err) {
-      Client.Logger.error(`Failed to run ${Command.data.name} for user ${Interaction.user.tag}.`, err)
+      Client.Logger.log(`Failed to run ${Command.data.name} for user ${Interaction.user.tag}. ${err}`, 'ERROR')
       return await Interaction.reply({ content: 'There was an error while executing that command! My developer has been notified.', ephemeral: true })
     }
   }

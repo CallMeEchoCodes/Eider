@@ -18,8 +18,8 @@ specifiers:
   eslint-plugin-promise: ^5.2.0
   node-vibrant: ^3.2.1-alpha.1
   nodemon: ^2.0.15
+  simpllog: ^1.1.1
   systeminformation: ^5.11.8
-  tslog: ^3.3.2
   typescript: ^4.6.2
   uwuifier: ^4.0.4
 
@@ -31,8 +31,8 @@ dependencies:
   discord-api-types: 0.34.0
   discord.js: 13.6.0
   node-vibrant: 3.2.1-alpha.1
+  simpllog: 1.1.1
   systeminformation: 5.11.8
-  tslog: 3.3.2
   uwuifier: 4.0.4
 
 devDependencies:
@@ -760,10 +760,6 @@ packages:
   /buffer-equal/0.0.1:
     resolution: {integrity: sha1-kbx0sR6kBbyRa8aqkI+q+ltKrEs=}
     engines: {node: '>=0.4.0'}
-    dev: false
-
-  /buffer-from/1.1.2:
-    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: false
 
   /buffer/5.7.1:
@@ -2708,6 +2704,10 @@ packages:
       simple-concat: 1.0.1
     dev: false
 
+  /simpllog/1.1.1:
+    resolution: {integrity: sha512-iUENZiocaO3iNpAbLk/ApShC6ZCdbjFKkEqsFPPBJ32NV9BFwTypaiqgM7LiqIEFADk4pS2dzFpxax0c708kcw==}
+    dev: false
+
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
@@ -2721,18 +2721,6 @@ packages:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
     dev: true
-
-  /source-map-support/0.5.21:
-    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-    dev: false
-
-  /source-map/0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
-    engines: {node: '>=0.10.0'}
-    dev: false
 
   /spawn-command/0.0.2-1:
     resolution: {integrity: sha1-YvXpRmmBwbeW3Fkpk34RycaSG9A=}
@@ -2906,13 +2894,6 @@ packages:
 
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
-    dev: false
-
-  /tslog/3.3.2:
-    resolution: {integrity: sha512-K+XduMfa9+yiHE/vxbUD/dL7RAbw9yIfi9tMjQj3uQ8evkPRKkmw0mQgEkzmueyg23hJHGaOQmDnCEZoKEws+w==}
-    engines: {node: '>=10'}
-    dependencies:
-      source-map-support: 0.5.21
     dev: false
 
   /tsutils/3.21.0_typescript@4.6.2:
