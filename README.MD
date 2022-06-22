@@ -111,7 +111,7 @@ Eider is nowhere near done but i hope it can provide some use to you guys making
   ```
 5. Change Directory
   ```sh
-  cd ./build
+  cd ./dist
   ```
 
 6. Run `Deploy.ts`
