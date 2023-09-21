@@ -17,7 +17,7 @@
     "discord.js": "^13.6.0",
     "node-vibrant": "^3.2.1-alpha.1",
     "simpllog": "^1.1.1",
-    "systeminformation": "^5.11.8",
+    "systeminformation": "^5.21.7",
     "uwuifier": "^4.0.4"
   },
   "devDependencies": {
